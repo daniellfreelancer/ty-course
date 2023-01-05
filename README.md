@@ -1,1 +1,3 @@
-# ty-course
+# TypeScript-course
+
+
