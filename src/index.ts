@@ -393,4 +393,35 @@ const cookieOptions = {
 // deleteAllCookies();
 
 
+//clase Temporizador
 
+class Temporizador {
+
+    public terminar?: () => void;
+
+    public empezar(): void {
+
+        setTimeout(()=>{
+            if(!this.terminar) return
+
+            //cuando termine el tiempo se ejecuta
+            this.terminar();
+        },10000)
+
+    }
+
+}
+
+const miTemporizador: Temporizador = new Temporizador();
+
+//definir la funcion del callback a ejecutar
+
+miTemporizador.terminar = () =>{
+    console.log("Hemos terminado la tarea de tiempo")
+}
+
+//lanzamos el temporizador
+
+miTemporizador.empezar();
+
+// setInterval(()=> console.log("tick"), 1000);
