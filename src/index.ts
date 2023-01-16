@@ -2,6 +2,9 @@ import { deleteAllCookies, deleteCookie, getCookieValue, setCookie } from 'cooki
 import { Curso } from './models/curso';
 import { Estudiante } from './models/Estudiante';
 import { LISTA_CURSOS } from './mock/cursos.mock';
+import { EmpleadosPublicos, Jefe } from './models/Persona';
+import { ITarea, Niveles } from './models/interfaces/Persona.interface';
+import { title } from 'process';
 
 
 
@@ -14,13 +17,11 @@ let edad: number = 37;
 let lluvia: boolean = true
 
 
-console.log(nombre);
-console.log("Hola, ", nombre, "!");
-console.log(`Hola ${nombre} que tal?`);
+
 
 const PI = 3.1419;
 
-console.log(PI * edad);
+
 
 //tipar siempre las variables:
 //any
@@ -422,11 +423,11 @@ const miTemporizador: Temporizador = new Temporizador();
 
 //definir la funcion del callback a ejecutar
 
-miTemporizador.terminar = () =>{
-    console.log("Hemos terminado la tarea de tiempo")
-    console.log("Clases y objetos")
+// miTemporizador.terminar = () =>{
+//     console.log("Hemos terminado la tarea de tiempo")
+//     console.log("Clases y objetos")
 
-}
+// }
 
 //lanzamos el temporizador
 
@@ -464,4 +465,44 @@ console.log(estudianteA.horasEstudaidas)
  * 
  */
 
+let empleadoA = new EmpleadosPublicos("Martin", "Sabala", 45, 2000)
 
+let empleadoB = new EmpleadosPublicos("Daniel", "Lugo", 36, 1000)
+
+let empleadoC = new EmpleadosPublicos("Pepe", "Trueno", 30, 1200)
+
+
+empleadoA.saludar()
+
+let jefeA = new Jefe("Pablo", "Garcia", 50)
+
+jefeA.empleados.push(empleadoA, empleadoB, empleadoC)
+
+
+jefeA.empleados.forEach((empleado : EmpleadosPublicos)=>{
+            empleado.saludar();
+})
+
+
+empleadoC.saludar()
+
+jefeA.saludar()
+
+
+
+/**
+ * uso de interfaces
+ */
+
+let programar: ITarea = {
+    titulo: 'Programar Typescript',
+    descripcion:"Practicar para aprender Typescript",
+    completado: false,
+    urgencia: Niveles.urgente,
+    resumen: function (): string {
+       return `${this.titulo} - ${this.completado} - nivel ${this.urgencia}`
+    }
+}
+
+
+console.log(programar.resumen());
