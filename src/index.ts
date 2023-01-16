@@ -406,7 +406,7 @@ class Temporizador {
 
             //cuando termine el tiempo se ejecuta
             this.terminar();
-        },10000)
+        },1000)
 
     }
 
@@ -418,6 +418,8 @@ const miTemporizador: Temporizador = new Temporizador();
 
 miTemporizador.terminar = () =>{
     console.log("Hemos terminado la tarea de tiempo")
+    console.log("Clases y objetos")
+
 }
 
 //lanzamos el temporizador
@@ -425,3 +427,9 @@ miTemporizador.terminar = () =>{
 miTemporizador.empezar();
 
 // setInterval(()=> console.log("tick"), 1000);
+
+
+
+let newName = "Sofia Lugo Diaz"
+
+console.log(newName)
