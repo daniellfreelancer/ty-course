@@ -1,4 +1,10 @@
 import { deleteAllCookies, deleteCookie, getCookieValue, setCookie } from 'cookies-utils';
+import { Curso } from './models/curso';
+import { Estudiante } from './models/Estudiante';
+import { LISTA_CURSOS } from './mock/cursos.mock';
+
+
+
 
 console.log("Hola TypeScript Im Daniel ");
 
@@ -430,6 +436,32 @@ miTemporizador.empezar();
 
 
 
-let newName = "Sofia Lugo Diaz"
 
-console.log(newName)
+// const cursoTS: Curso = new Curso("Typescript", 15);
+// const cursoJS: Curso = new Curso("Javascript", 20);
+
+
+const listaCursos: Curso[] = LISTA_CURSOS;
+
+// listaCursos.push(cursoJS, cursoTS);
+
+
+const estudianteA : Estudiante = new Estudiante("Daniel", listaCursos, "Lugo")
+
+console.log(estudianteA)
+
+console.log(estudianteA.horasEstudaidas)
+
+
+
+
+/**
+ * Herencia
+ * Polimorfismo
+ * decoradores
+ * intergafes
+ * 
+ * 
+ */
+
+
