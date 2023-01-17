@@ -5,6 +5,8 @@ import { LISTA_CURSOS } from './mock/cursos.mock';
 import { EmpleadosPublicos, Jefe } from './models/Persona';
 import { ITarea, Niveles } from './models/interfaces/Persona.interface';
 import { title } from 'process';
+import { Programar } from './models/Programacion';
+import { Singleton } from './patterns/creacionales/singleton';
 
 
 
@@ -506,3 +508,96 @@ let programar: ITarea = {
 
 
 console.log(programar.resumen());
+
+
+// Tarea de programacion para implementar ITarea
+
+
+let programarTS = new Programar("Typescript", "Tarea de Programacion en TS", false, Niveles.Bloqueante)
+
+
+console.log(programarTS.resumen())
+
+
+
+//Decoradores son funciones delcaradas a traves de un simbolo @
+// Decoradores experimentales
+// Clases
+// Parametros
+// Metodos
+// Propiedades
+
+
+/**
+ * 
+ * @param label 
+ * @returns 
+ */
+function Override(label: string){
+    return function (target:any, key:string){
+        Object.defineProperty(target, key, {
+            configurable: false,
+            get: ()=> label
+        })
+    }
+}
+
+// class PruebaDecorador {
+//     @Override('Prueba')
+// }
+
+// let prueba1 = new PruebaDecorador()
+
+function SoloLectura (target:any, key: string){
+    Object.defineProperty(target, key, {
+        writable: false
+    })
+}
+
+
+// class PruebaLectura {
+//     @SoloLectura
+//     namme: string = " ";
+    
+// }
+
+
+// let pruebaTwo = new PruebaLectura()// 
+// pruebaTwo.namme = "Daniel"
+
+// console.log(pruebaTwo.namme)
+
+//Patrones de diseño
+//estandarizacion de codigo
+/**
+ * Patrones Creacionales (orientado al codigo limpio bajo estandares)
+ * - Mecanismos de creacion de objetos
+ * - Reutilizacion
+ * - Flexibilidad al codigo
+ * 
+ * Patrones estructurales
+ * - Eficiencia y flexibilidad de la estructura a la hora de definir clases y objetos
+ * -
+ * 
+ * Patrones de Comportamiento
+ * - Centrados en la asignacion efectiva de responsabilidad entre objetos
+ * - Comunicacion efectiva entre objetos
+ * 
+ * 
+ * Lectura:
+ * refactorin.guru
+ */
+
+// * PATRONES CREACIONALES
+
+
+    const miPrimerSingleton = Singleton.getInstance();
+    const miSegundoSingleton = Singleton.getInstance();
+
+    if (miPrimerSingleton === miSegundoSingleton) {
+        console.log('Singleton funciona, ambas variables tienen de la misma instancia.');
+        miPrimerSingleton.mostrarPorConsola();
+        miSegundoSingleton.mostrarPorConsola();
+    } else {
+        console.log('Singleton falló, variables tienen diferente instancia.');
+    }
